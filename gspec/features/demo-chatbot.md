@@ -8,7 +8,7 @@ gspec-version: 1.9.0
 
 A scripted chatbot widget that appears as a floating bubble on every page, demonstrating the value of conversational AI for business websites — without requiring an LLM or any external service. The bot uses a hybrid of quick-reply buttons and keyword matching to handle common visitor questions about services, contact information, and general FAQs.
 
-The chatbot is transparently framed as a demo, showing visitors (and prospective clients) what an AI-powered assistant *could* do for their business. This makes it both a functional site feature and a sales tool for chatbot services.
+The chatbot is transparently framed as a demo, showing visitors (and prospective clients) what an AI-powered assistant _could_ do for their business. This makes it both a functional site feature and a sales tool for chatbot services.
 
 ## 2. Users & Use Cases
 
@@ -119,9 +119,9 @@ The chatbot is transparently framed as a demo, showing visitors (and prospective
 
 **Risks:**
 
-- **Keyword collisions**: Free-text matching may misinterpret ambiguous input. *Mitigation*: Keep keyword rules narrow; prefer quick-reply buttons as the primary interaction; make the fallback message genuinely helpful.
-- **Mobile viewport crowding**: A floating widget on small screens can obstruct content. *Mitigation*: Use a compact bubble that expands to a near-full-screen panel on mobile; ensure the close button is easy to tap.
-- **Content staleness**: Hardcoded conversation content may drift from actual business details. *Mitigation*: Centralize conversation data in a single maintainable location within the codebase.
+- **Keyword collisions**: Free-text matching may misinterpret ambiguous input. _Mitigation_: Keep keyword rules narrow; prefer quick-reply buttons as the primary interaction; make the fallback message genuinely helpful.
+- **Mobile viewport crowding**: A floating widget on small screens can obstruct content. _Mitigation_: Use a compact bubble that expands to a near-full-screen panel on mobile; ensure the close button is easy to tap.
+- **Content staleness**: Hardcoded conversation content may drift from actual business details. _Mitigation_: Centralize conversation data in a single maintainable location within the codebase.
 
 ## 7. Success Metrics
 

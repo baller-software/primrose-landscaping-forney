@@ -1,11 +1,11 @@
 ---
-import {
+import { conversationTree, keywordRules, DEMO_BANNER } from '../data/chatbot';
+
+const chatData = JSON.stringify({
   conversationTree,
   keywordRules,
   DEMO_BANNER,
-} from '../data/chatbot';
-
-const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER });
+});
 ---
 
 <!-- Chat bubble trigger -->
@@ -42,8 +42,10 @@ const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER })
     stroke="currentColor"
     aria-hidden="true"
   >
-    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"
-    ></path>
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M6 18 18 6M6 6l12 12"></path>
   </svg>
 </button>
 
@@ -55,7 +57,9 @@ const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER })
   aria-label="Chat assistant"
 >
   <!-- Header -->
-  <div class="flex items-center justify-between border-b border-border bg-primary px-4 py-3">
+  <div
+    class="flex items-center justify-between border-b border-border bg-primary px-4 py-3"
+  >
     <div class="flex items-center gap-2 text-white">
       <svg
         class="h-5 w-5"
@@ -86,8 +90,10 @@ const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER })
         stroke="currentColor"
         aria-hidden="true"
       >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"
-        ></path>
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18 18 6M6 6l12 12"></path>
       </svg>
     </button>
   </div>
@@ -145,7 +151,10 @@ const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER })
   const data = (window as any).__chatbotData as {
     conversationTree: Record<
       string,
-      { text: string; quickReplies?: { label: string; action: string; value: string }[] }
+      {
+        text: string;
+        quickReplies?: { label: string; action: string; value: string }[];
+      }
     >;
     keywordRules: { keywords: string[]; responseKey: string }[];
     DEMO_BANNER: string;
@@ -157,10 +166,23 @@ const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER })
   const iconOpen = document.getElementById('chatbot-icon-open');
   const iconClose = document.getElementById('chatbot-icon-close');
   const messagesEl = document.getElementById('chatbot-messages');
-  const inputForm = document.getElementById('chatbot-input-form') as HTMLFormElement | null;
-  const inputField = document.getElementById('chatbot-input') as HTMLInputElement | null;
+  const inputForm = document.getElementById(
+    'chatbot-input-form',
+  ) as HTMLFormElement | null;
+  const inputField = document.getElementById(
+    'chatbot-input',
+  ) as HTMLInputElement | null;
 
-  if (toggle && panel && closeBtn && iconOpen && iconClose && messagesEl && inputForm && inputField) {
+  if (
+    toggle &&
+    panel &&
+    closeBtn &&
+    iconOpen &&
+    iconClose &&
+    messagesEl &&
+    inputForm &&
+    inputField
+  ) {
     let isOpen = false;
     let initialized = false;
 

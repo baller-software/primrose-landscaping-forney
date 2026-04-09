@@ -22,7 +22,7 @@ export const conversationTree: Record<string, BotMessage> = {
 
   // --- Services branch ---
   services: {
-    text: "We offer professional lawn care and landscaping services in Forney, TX and surrounding areas. What would you like to know more about?",
+    text: 'We offer professional lawn care and landscaping services in Forney, TX and surrounding areas. What would you like to know more about?',
     quickReplies: [
       { label: 'Lawn Maintenance', action: 'reply', value: 'services_lawn' },
       { label: 'Weed Control', action: 'reply', value: 'services_weed' },
@@ -39,7 +39,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   services_weed: {
-    text: "We provide targeted weed control and prevention treatments to keep your lawn healthy and weed-free. Our approach combines pre-emergent and post-emergent treatments for the best results.",
+    text: 'We provide targeted weed control and prevention treatments to keep your lawn healthy and weed-free. Our approach combines pre-emergent and post-emergent treatments for the best results.',
     quickReplies: [
       { label: 'Get a Quote', action: 'navigate', value: '/contact/' },
       { label: 'Other Services', action: 'reply', value: 'services' },
@@ -47,7 +47,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   services_hardscape: {
-    text: "Our hardscaping services include patios, walkways, retaining walls, and other structural landscape features. We handle design and installation to transform your outdoor space.",
+    text: 'Our hardscaping services include patios, walkways, retaining walls, and other structural landscape features. We handle design and installation to transform your outdoor space.',
     quickReplies: [
       { label: 'Get a Quote', action: 'navigate', value: '/contact/' },
       { label: 'Other Services', action: 'reply', value: 'services' },
@@ -81,7 +81,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   contact_address: {
-    text: "Our office is located at:\n\nGateway Blvd N\nForney, TX 75126\n\nFeel free to reach out before stopping by!",
+    text: 'Our office is located at:\n\nGateway Blvd N\nForney, TX 75126\n\nFeel free to reach out before stopping by!',
     quickReplies: [
       { label: 'Send a Message', action: 'navigate', value: '/contact/' },
       { label: 'Phone & Email', action: 'reply', value: 'contact_info' },
@@ -91,7 +91,7 @@ export const conversationTree: Record<string, BotMessage> = {
 
   // --- FAQ branch ---
   faq: {
-    text: "Here are some of the questions we get most often. What would you like to know?",
+    text: 'Here are some of the questions we get most often. What would you like to know?',
     quickReplies: [
       { label: 'Service Area', action: 'reply', value: 'faq_area' },
       { label: 'Licensed & Insured?', action: 'reply', value: 'faq_licensed' },
@@ -108,7 +108,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   faq_licensed: {
-    text: "Yes! Primrose Landscaping LLC is a fully licensed and insured professional landscaping company. You can count on us to handle your property with care and accountability.",
+    text: 'Yes! Primrose Landscaping LLC is a fully licensed and insured professional landscaping company. You can count on us to handle your property with care and accountability.',
     quickReplies: [
       { label: 'Our Services', action: 'reply', value: 'services' },
       { label: 'More Questions', action: 'reply', value: 'faq' },
@@ -116,7 +116,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   faq_pricing: {
-    text: "Pricing depends on the size of your property and the services you need. We offer free estimates — just reach out through our contact form or give us a call for a personalized quote.",
+    text: 'Pricing depends on the size of your property and the services you need. We offer free estimates — just reach out through our contact form or give us a call for a personalized quote.',
     quickReplies: [
       { label: 'Request a Quote', action: 'navigate', value: '/contact/' },
       { label: 'More Questions', action: 'reply', value: 'faq' },
@@ -124,7 +124,7 @@ export const conversationTree: Record<string, BotMessage> = {
     ],
   },
   faq_seasonal: {
-    text: "We offer year-round service! In spring and summer we focus on mowing, trimming, and weed control. Fall and winter services include leaf cleanup, seasonal prep, and hardscape projects.",
+    text: 'We offer year-round service! In spring and summer we focus on mowing, trimming, and weed control. Fall and winter services include leaf cleanup, seasonal prep, and hardscape projects.',
     quickReplies: [
       { label: 'Our Services', action: 'reply', value: 'services' },
       { label: 'More Questions', action: 'reply', value: 'faq' },
