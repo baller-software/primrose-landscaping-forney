@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import MissionStatement from '../components/MissionStatement.astro';
+---
+
+<BaseLayout
+  title="About Us"
+  description="Learn about Primrose Landscaping — a professional, customer-centric lawn care company serving Forney, TX and surrounding areas."
+>
+  <PageHeader
+    title="About Primrose Landscaping"
+    subtitle="A small business with a big commitment to quality."
+  />
+
+  <section class="px-4 py-16 lg:py-20">
+    <div class="mx-auto max-w-[1152px]">
+      <!-- Company Story -->
+      <div class="mx-auto max-w-3xl">
+        <h2 class="text-h2 font-semibold text-text-primary">Our Story</h2>
+        <div class="mt-6 space-y-4 text-text-secondary leading-relaxed">
+          <p>
+            Primrose Landscaping LLC was founded in Forney, Texas with a simple
+            goal: to provide top-grade lawn maintenance with a level of
+            professionalism and care that sets us apart. What started as a
+            commitment to a few local yards has grown into a trusted landscaping
+            service serving the Forney community and surrounding areas.
+          </p>
+          <p>
+            We believe that great results come from great people. That's why we
+            invest heavily in our team — offering paid training, competitive
+            wages, and a supportive work environment. Every crew member is
+            prepared to deliver the quality our clients expect, because we know
+            your property deserves nothing less.
+          </p>
+          <p>
+            As a small business, we have the flexibility to give every client
+            personal attention. We take the time to understand your needs, offer
+            honest recommendations, and follow through with consistent, reliable
+            service. When you work with Primrose, you're not just hiring a lawn
+            care company — you're partnering with a team that genuinely cares
+            about your outdoor space.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mission Statement -->
+      <div class="mx-auto mt-16 max-w-3xl">
+        <h2 class="mb-6 text-h2 font-semibold text-text-primary">
+          Our Mission
+        </h2>
+        <MissionStatement
+          statement="To provide top-grade lawn maintenance with professionalism, integrity, and a customer-first approach — ensuring every property we touch reflects the pride and care our clients deserve."
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>

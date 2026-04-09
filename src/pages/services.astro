@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Our Services"
+  description="Explore the lawn care and landscaping services offered by Primrose Landscaping in Forney, TX — including lawn maintenance, weed control, and hardscape."
+>
+  <PageHeader
+    title="Our Services"
+    subtitle="From routine lawn care to custom outdoor projects, we deliver quality results you can count on."
+  />
+
+  <section class="px-4 py-16 lg:py-20">
+    <div class="mx-auto max-w-[1152px]">
+      <p
+        class="mx-auto mb-12 max-w-3xl text-center text-body-lg text-text-secondary"
+      >
+        Primrose Landscaping offers a full range of lawn care and landscaping
+        services designed to keep your property looking its best. Whether you
+        need weekly maintenance or a complete outdoor transformation, our
+        trained crews have the skills and equipment to get the job done right.
+      </p>
+
+      <div class="grid gap-8 lg:grid-cols-2">
+        <ServiceCard
+          name="Lawn Maintenance"
+          icon="🌿"
+          description="Our core service — regular mowing, edging, trimming, and cleanup to keep your lawn healthy and looking sharp. We follow a consistent schedule tailored to your property's needs, using professional-grade equipment for a clean, even cut every time. Whether it's weekly or bi-weekly visits, we make sure your yard always looks its best."
+        />
+
+        <ServiceCard
+          name="Weed Control"
+          icon="🛡️"
+          description="Don't let weeds take over your lawn and garden beds. Our weed control programs include both pre-emergent and post-emergent treatments to stop weeds before they start and eliminate the ones that break through. We target problem areas with care, protecting your healthy grass while removing unwanted growth."
+        />
+
+        <ServiceCard
+          name="Landscape Hardscape"
+          icon="🏗️"
+          description="Transform your outdoor space with custom hardscape features. From patios and walkways to retaining walls and outdoor living areas, we design and build structures that are both beautiful and built to last. Our hardscape services add functionality and value to your property while complementing your existing landscape."
+        />
+
+        <ServiceCard
+          name="General Lawn Care"
+          icon="☀️"
+          description="Beyond mowing, your lawn needs ongoing attention to stay healthy. Our general lawn care services include fertilization, aeration, overseeding, and seasonal cleanup. We assess your lawn's condition and recommend a care plan that promotes thick, green growth throughout the year."
+        />
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    heading="Let's Get Started"
+    description="Contact us today for a free estimate on any of our services."
+  />
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ValueProposition from '../components/ValueProposition.astro';
+import ServicesOverview from '../components/ServicesOverview.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout
+  title="Home"
+  description="Primrose Landscaping provides professional lawn care and landscaping services in Forney, TX. Quality lawn maintenance, weed control, and hardscape services."
+>
+  <Hero />
+  <ValueProposition />
+  <ServicesOverview />
+  <CTASection
+    heading="Ready to Transform Your Lawn?"
+    description="Get a free consultation today and see what Primrose Landscaping can do for your property."
+    buttonText="Get a Free Quote"
+  />
+</BaseLayout>

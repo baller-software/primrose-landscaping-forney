@@ -1,0 +1,13 @@
+---
+interface Props {
+  statement: string;
+}
+
+const { statement } = Astro.props;
+---
+
+<blockquote
+  class="rounded-lg border-l-4 border-primary bg-primary/5 px-8 py-8 text-body-lg leading-relaxed text-text-primary italic"
+>
+  {statement}
+</blockquote>

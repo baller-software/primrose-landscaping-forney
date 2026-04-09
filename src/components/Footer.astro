@@ -1,0 +1,72 @@
+---
+import { mainNavLinks, legalLinks } from '../data/navigation';
+import { site } from '../data/site';
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-slate-dark text-slate-300">
+  <div class="mx-auto max-w-[1152px] px-4 py-12">
+    <div class="grid gap-8 md:grid-cols-3">
+      <!-- Business identity -->
+      <div>
+        <p class="text-lg font-semibold text-white">{site.name}</p>
+        <p class="mt-2 text-sm text-slate-400">{site.tagline}</p>
+      </div>
+
+      <!-- Navigation links -->
+      <nav aria-label="Footer navigation">
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-slate-400"
+        >
+          Pages
+        </p>
+        <ul class="mt-3 space-y-2">
+          {
+            mainNavLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-slate-300 transition-colors duration-fast hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <!-- Legal links -->
+      <nav aria-label="Legal">
+        <p
+          class="text-sm font-semibold uppercase tracking-wider text-slate-400"
+        >
+          Legal
+        </p>
+        <ul class="mt-3 space-y-2">
+          {
+            legalLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="text-sm text-slate-300 transition-colors duration-fast hover:text-white"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Copyright bar -->
+  <div class="border-t border-slate-700 py-4">
+    <p class="text-center text-xs text-slate-500">
+      &copy; {currentYear}
+      {site.legalName}. All rights reserved.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,55 @@
+---
+import SectionHeading from './SectionHeading.astro';
+
+const services = [
+  {
+    name: 'Lawn Maintenance',
+    description:
+      'Regular mowing, edging, and trimming to keep your lawn healthy and looking sharp all season long.',
+    icon: '🌿',
+  },
+  {
+    name: 'Weed Control',
+    description:
+      'Targeted weed treatment and prevention programs to protect your lawn and garden beds.',
+    icon: '🛡️',
+  },
+  {
+    name: 'Landscape Hardscape',
+    description:
+      'Patios, walkways, retaining walls, and outdoor living spaces designed and built to last.',
+    icon: '🏗️',
+  },
+];
+---
+
+<section class="px-4 py-16 lg:py-20">
+  <div class="mx-auto max-w-[1152px]">
+    <SectionHeading
+      title="Our Services"
+      subtitle="From routine lawn care to custom hardscape projects, we have the expertise to transform your outdoor space."
+    />
+
+    <div class="grid gap-8 md:grid-cols-3">
+      {
+        services.map((service) => (
+          <div class="rounded-lg border border-border p-6 transition-shadow duration-medium hover:shadow-md">
+            <div class="mb-4 text-4xl" aria-hidden="true">
+              {service.icon}
+            </div>
+            <h3 class="text-h3 font-medium text-text-primary">
+              {service.name}
+            </h3>
+            <p class="mt-2 text-text-secondary">{service.description}</p>
+            <a
+              href="/services/"
+              class="mt-4 inline-block text-sm font-medium text-primary transition-colors duration-fast hover:text-primary-dark"
+            >
+              Learn more &rarr;
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

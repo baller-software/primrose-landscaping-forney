@@ -1,0 +1,33 @@
+---
+import { site } from '../data/site';
+---
+
+<section class="relative overflow-hidden">
+  <!-- Background image -->
+  <img
+    src="/images/hero-lawn.jpg"
+    alt="Well-maintained green lawn with landscaped garden beds and mature trees"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <!-- Dark gradient overlay for text readability -->
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/50"
+  >
+  </div>
+
+  <!-- Content -->
+  <div class="relative mx-auto max-w-[1152px] px-4 py-24 sm:py-32 lg:py-40">
+    <h1
+      class="max-w-xl text-4xl font-bold leading-tight text-white sm:text-5xl"
+    >
+      Professional Lawn Care in Forney, TX
+    </h1>
+    <p class="mt-6 max-w-lg text-body-lg leading-relaxed text-slate-200">
+      {site.tagline} We deliver top-grade lawn maintenance with a commitment to quality,
+      professionalism, and customer satisfaction.
+    </p>
+    <div class="mt-8">
+      <slot name="cta" />
+    </div>
+  </div>
+</section>

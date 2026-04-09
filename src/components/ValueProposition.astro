@@ -1,0 +1,59 @@
+---
+import SectionHeading from './SectionHeading.astro';
+import LeafIcon from './icons/LeafIcon.astro';
+import ShieldCheckIcon from './icons/ShieldCheckIcon.astro';
+import SparklesIcon from './icons/SparklesIcon.astro';
+import SunIcon from './icons/SunIcon.astro';
+
+const values = [
+  {
+    icon: LeafIcon,
+    title: 'Expert Lawn Care',
+    description:
+      'Our trained crews deliver top-grade lawn maintenance using proven techniques and professional-grade equipment.',
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: 'Reliable & Trustworthy',
+    description:
+      'Count on consistent, dependable service every visit. We show up on time and deliver on our promises.',
+  },
+  {
+    icon: SparklesIcon,
+    title: 'Quality Results',
+    description:
+      'We take pride in every yard we touch, leaving your property looking its absolute best after every service.',
+  },
+  {
+    icon: SunIcon,
+    title: 'Customer First',
+    description:
+      'Your satisfaction is our top priority. We listen to your needs and tailor our services to exceed your expectations.',
+  },
+];
+---
+
+<section class="bg-surface px-4 py-16 lg:py-20">
+  <div class="mx-auto max-w-[1152px]">
+    <SectionHeading
+      title="Why Choose Primrose?"
+      subtitle="We combine professional expertise with a personal touch to keep your property looking beautiful year-round."
+    />
+
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        values.map((value) => (
+          <div class="rounded-lg border border-border bg-background p-6 text-center">
+            <div class="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary">
+              <value.icon class="h-7 w-7" />
+            </div>
+            <h3 class="text-h3 font-medium text-text-primary">{value.title}</h3>
+            <p class="mt-2 text-body-sm text-text-secondary">
+              {value.description}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
