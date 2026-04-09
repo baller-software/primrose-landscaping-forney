@@ -1,0 +1,327 @@
+---
+import {
+  conversationTree,
+  keywordRules,
+  DEMO_BANNER,
+} from '../data/chatbot';
+
+const chatData = JSON.stringify({ conversationTree, keywordRules, DEMO_BANNER });
+---
+
+<!-- Chat bubble trigger -->
+<button
+  id="chatbot-toggle"
+  class="fixed right-5 bottom-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-primary text-white shadow-md transition-transform duration-medium ease-out hover:scale-105 focus:ring-2 focus:ring-primary/20 focus:ring-offset-2 focus:outline-none"
+  aria-label="Open chat assistant"
+  aria-expanded="false"
+  aria-controls="chatbot-panel"
+>
+  <!-- Chat icon -->
+  <svg
+    id="chatbot-icon-open"
+    class="h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    aria-hidden="true"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
+    ></path>
+  </svg>
+  <!-- Close icon (hidden) -->
+  <svg
+    id="chatbot-icon-close"
+    class="hidden h-6 w-6"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke-width="1.5"
+    stroke="currentColor"
+    aria-hidden="true"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"
+    ></path>
+  </svg>
+</button>
+
+<!-- Chat panel -->
+<div
+  id="chatbot-panel"
+  class="fixed right-5 bottom-24 z-40 hidden w-[340px] origin-bottom-right scale-95 flex-col overflow-hidden rounded-lg border border-border bg-background opacity-0 shadow-md transition-all duration-medium ease-out sm:w-[380px] max-[480px]:inset-x-3 max-[480px]:right-auto max-[480px]:bottom-20 max-[480px]:w-auto"
+  role="dialog"
+  aria-label="Chat assistant"
+>
+  <!-- Header -->
+  <div class="flex items-center justify-between border-b border-border bg-primary px-4 py-3">
+    <div class="flex items-center gap-2 text-white">
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z"
+        ></path>
+      </svg>
+      <span class="text-sm font-semibold">Primrose Assistant</span>
+    </div>
+    <button
+      id="chatbot-close"
+      class="flex h-8 w-8 items-center justify-center rounded-md text-white/80 transition-colors hover:text-white focus:outline-none"
+      aria-label="Close chat"
+    >
+      <svg
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"
+        ></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Messages area -->
+  <div
+    id="chatbot-messages"
+    class="flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto p-4"
+    style="height: 350px; max-height: 50vh;"
+  >
+    <!-- Messages rendered by script -->
+  </div>
+
+  <!-- Input area -->
+  <div class="border-t border-border p-3">
+    <form id="chatbot-input-form" class="flex items-center gap-2">
+      <label for="chatbot-input" class="sr-only">Type a message</label>
+      <input
+        type="text"
+        id="chatbot-input"
+        class="min-w-0 flex-1 rounded-md border border-border bg-transparent px-3 py-2 text-sm text-text-primary placeholder:text-text-disabled focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none"
+        placeholder="Type a message..."
+        autocomplete="off"
+      />
+      <button
+        type="submit"
+        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-md bg-primary text-white transition-colors duration-fast hover:bg-primary-dark focus:ring-2 focus:ring-primary/20 focus:outline-none"
+        aria-label="Send message"
+      >
+        <svg
+          class="h-4 w-4"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+          ></path>
+        </svg>
+      </button>
+    </form>
+  </div>
+</div>
+
+<!-- Chatbot data (embedded at build time) -->
+<script is:inline define:vars={{ chatData }}>
+  window.__chatbotData = JSON.parse(chatData);
+</script>
+
+<script>
+  const data = (window as any).__chatbotData as {
+    conversationTree: Record<
+      string,
+      { text: string; quickReplies?: { label: string; action: string; value: string }[] }
+    >;
+    keywordRules: { keywords: string[]; responseKey: string }[];
+    DEMO_BANNER: string;
+  };
+
+  const toggle = document.getElementById('chatbot-toggle');
+  const panel = document.getElementById('chatbot-panel');
+  const closeBtn = document.getElementById('chatbot-close');
+  const iconOpen = document.getElementById('chatbot-icon-open');
+  const iconClose = document.getElementById('chatbot-icon-close');
+  const messagesEl = document.getElementById('chatbot-messages');
+  const inputForm = document.getElementById('chatbot-input-form') as HTMLFormElement | null;
+  const inputField = document.getElementById('chatbot-input') as HTMLInputElement | null;
+
+  if (toggle && panel && closeBtn && iconOpen && iconClose && messagesEl && inputForm && inputField) {
+    let isOpen = false;
+    let initialized = false;
+
+    function openPanel() {
+      isOpen = true;
+      panel!.classList.remove('hidden');
+      // Trigger reflow, then animate in
+      panel!.offsetHeight;
+      panel!.classList.remove('scale-95', 'opacity-0');
+      panel!.classList.add('scale-100', 'opacity-100');
+      toggle!.setAttribute('aria-expanded', 'true');
+      iconOpen!.classList.add('hidden');
+      iconClose!.classList.remove('hidden');
+      inputField!.focus();
+
+      if (!initialized) {
+        initialized = true;
+        addBanner(data.DEMO_BANNER);
+        addBotMessage('welcome');
+      }
+    }
+
+    function closePanel() {
+      isOpen = false;
+      panel!.classList.remove('scale-100', 'opacity-100');
+      panel!.classList.add('scale-95', 'opacity-0');
+      toggle!.setAttribute('aria-expanded', 'false');
+      iconOpen!.classList.remove('hidden');
+      iconClose!.classList.add('hidden');
+      toggle!.focus();
+      // Hide after transition
+      setTimeout(() => {
+        if (!isOpen) panel!.classList.add('hidden');
+      }, 200);
+    }
+
+    function scrollToBottom() {
+      messagesEl!.scrollTop = messagesEl!.scrollHeight;
+    }
+
+    function addBanner(text: string) {
+      const el = document.createElement('div');
+      el.className =
+        'rounded-md bg-primary/10 px-3 py-2 text-xs text-primary text-center';
+      el.textContent = text;
+      messagesEl!.appendChild(el);
+    }
+
+    function addBotMessage(key: string) {
+      const msg = data.conversationTree[key];
+      if (!msg) return;
+
+      // Bot text bubble
+      const bubble = document.createElement('div');
+      bubble.className = 'self-start max-w-[85%]';
+
+      const textEl = document.createElement('div');
+      textEl.className =
+        'rounded-lg rounded-tl-none bg-surface px-3 py-2 text-sm text-text-primary whitespace-pre-line';
+      textEl.textContent = msg.text;
+      bubble.appendChild(textEl);
+      messagesEl!.appendChild(bubble);
+
+      // Quick-reply buttons
+      if (msg.quickReplies && msg.quickReplies.length > 0) {
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'flex flex-wrap gap-2 self-start';
+
+        msg.quickReplies.forEach((qr) => {
+          const btn = document.createElement('button');
+          btn.className =
+            'rounded-full border border-primary/40 bg-transparent px-3 py-1.5 text-xs font-medium text-primary transition-colors duration-fast hover:bg-primary hover:text-white focus:ring-2 focus:ring-primary/20 focus:outline-none';
+          btn.textContent = qr.label;
+          btn.type = 'button';
+
+          btn.addEventListener('click', () => {
+            // Disable all quick-reply buttons in this group
+            btnContainer.querySelectorAll('button').forEach((b) => {
+              (b as HTMLButtonElement).disabled = true;
+              b.classList.add('opacity-50', 'cursor-not-allowed');
+              b.classList.remove('hover:bg-primary', 'hover:text-white');
+            });
+
+            if (qr.action === 'navigate') {
+              addUserBubble(qr.label);
+              window.location.href = qr.value;
+            } else {
+              addUserBubble(qr.label);
+              addBotMessage(qr.value);
+              scrollToBottom();
+            }
+          });
+
+          btnContainer.appendChild(btn);
+        });
+
+        messagesEl!.appendChild(btnContainer);
+      }
+
+      scrollToBottom();
+    }
+
+    function addUserBubble(text: string) {
+      const bubble = document.createElement('div');
+      bubble.className = 'self-end max-w-[85%]';
+
+      const textEl = document.createElement('div');
+      textEl.className =
+        'rounded-lg rounded-tr-none bg-primary px-3 py-2 text-sm text-white';
+      textEl.textContent = text;
+      bubble.appendChild(textEl);
+      messagesEl!.appendChild(bubble);
+      scrollToBottom();
+    }
+
+    function matchKeywords(input: string): string | null {
+      const lower = input.toLowerCase();
+      for (const rule of data.keywordRules) {
+        for (const kw of rule.keywords) {
+          if (lower.includes(kw)) {
+            return rule.responseKey;
+          }
+        }
+      }
+      return null;
+    }
+
+    // Toggle button
+    toggle.addEventListener('click', () => {
+      if (isOpen) {
+        closePanel();
+      } else {
+        openPanel();
+      }
+    });
+
+    // Close button inside panel
+    closeBtn.addEventListener('click', closePanel);
+
+    // Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        closePanel();
+      }
+    });
+
+    // Free-text input
+    inputForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const text = inputField!.value.trim();
+      if (!text) return;
+
+      addUserBubble(text);
+      inputField!.value = '';
+
+      const matchedKey = matchKeywords(text);
+      if (matchedKey) {
+        addBotMessage(matchedKey);
+      } else {
+        addBotMessage('fallback');
+      }
+    });
+  }
+</script>

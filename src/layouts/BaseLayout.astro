@@ -1,6 +1,7 @@
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
+import Chatbot from '../components/Chatbot.astro';
 import '../styles/global.css';
 import { site } from '../data/site';
 
@@ -54,5 +55,6 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
       <slot />
     </main>
     <Footer />
+    <Chatbot />
   </body>
 </html>
