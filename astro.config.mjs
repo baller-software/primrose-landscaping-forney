@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://baller-software.github.io',
-  base: '/',
+  base: '/primrose-landscaping-forney',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
